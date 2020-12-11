@@ -1,0 +1,32 @@
+Face detection using opencv in python
+
+#Import the opencv module
+
+import cv2
+
+#Now import the face cascade classifier which helps the machine to identify the faces in the images.
+#It is basically an XML file,and note that this file has to be loaded correctly,otherwise there are going to be errors.
+
+# Create a CascadeClassifier Object
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+
+now read an image using opencv
+
+img = cv2.imread ('image.jpeg',1)
+
+#And now convert the image into a grayscale image. 
+
+# Convert into grayscale
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+And draw a rectangle wherever you find a face in the image.
+
+# Draw rectangle around the faces
+for (x, y, w, h) in faces:
+    cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+
+#And now display the image
+
+resized_image = cv2.resize(img, (600,700))
+cv2.imshow('img',resized_image)
+cv2.waitKey()
